@@ -5,27 +5,14 @@ import java.util.HashMap;
 
 
 public class PhoneBook {
-    // Выполнение задания №2
-    // самый простой телефонный справочник (минимальный функционал оформления и взаимодействия)
-    // поля класса:
     private final HashMap<String, ArrayList<String>> items = new HashMap<>();
 
     public void add(String surname, String phoneNumber) {
-        // Новый контакт создается в том случае если номер который введен не существует
-        if (items.get(surname) != null) {
-            if (!items.get(surname).contains(phoneNumber)) {
-                items.get(surname).add(phoneNumber);
-            }
-        } else {
-            ArrayList<String> arr = new ArrayList<>();
-            arr.add(phoneNumber);
-            items.put(surname, arr);
-        }
+        items.putIfAbsent(surname, new ArrayList<>());
+        items.get(surname).add(phoneNumber);
     }
 
-    public void get(String surname) {
-        String format = "|%1$-20.18s| контактный телефон(ы): ";
-        System.out.format(format, surname);
-        System.out.println(items.get(surname));
+    public ArrayList<String> get(String surname) {
+        return items.getOrDefault(surname, new ArrayList<>());
     }
 }
