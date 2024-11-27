@@ -1,29 +1,18 @@
 package test;
-
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
 import programm.Main;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class MainTest {
 
-class MainTest {
+    @org.testng.annotations.Test
+    public void testFactorial() {
+        Assert.assertEquals(Main.factorial(5), 120);
+        Assert.assertEquals(Main.factorial(0), 1);
+        Assert.assertEquals(Main.factorial(1), 1);
+    }
 
-    @Test
-    public void testFactorialOfZero() {
-        assertEquals(1, Main.factorial(0));
-    }
-    @Test
-    public void testFactorialOfPositiveNumber() {
-        assertEquals(120, Main.factorial(5));
-    }
-    @Test
-    public void testFactorialOfOne() {
-        assertEquals(1, Main.factorial(1));
-    }
-    @Test
-    public void testFactorialOfNegativeNumber() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            Main.factorial(-1);
-        });
-        assertEquals("Факториал отрицательного числа не может быть", exception.getMessage());
+    @org.testng.annotations.Test(expectedExceptions = IllegalArgumentException.class)
+    public void testFactorialNegative() {
+        Main.factorial(-1);
     }
 }
