@@ -12,8 +12,13 @@ public class MainTest {
     }
 
     @Test
+    public void testFactorialOfOne() {
+        assertEquals(Main.factorial(1), 1);
+    }
+
+    @Test
     public void testFactorialOfPositiveNumber() {
-        assertEquals(Main.factorial(4), 120);
+        assertEquals(Main.factorial(10), 3628800);
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
