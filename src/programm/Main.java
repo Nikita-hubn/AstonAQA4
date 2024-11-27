@@ -1,7 +1,7 @@
 package programm;
 
 public class Main {
-    public static long factorial(int n) {
+    public static long factorial(Integer n) {
         if (n < 0) {
             throw new IllegalArgumentException("Факториал отрицательного числа не может быть");
         } else if (n == 0) {
@@ -15,7 +15,7 @@ public class Main {
         }
     }
     public static void main(String[] args) {
-        int number = -10;
+        Integer number = 10;
         System.out.println("Факториал " + number + " = " + factorial(number));
     }
 }
