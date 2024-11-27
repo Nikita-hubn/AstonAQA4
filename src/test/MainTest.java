@@ -13,7 +13,7 @@ class MainTest {
     }
     @Test
     public void testFactorialOfPositiveNumber() {
-        assertEquals(120, Main.factorial(5));
+        assertEquals(3628800, Main.factorial(10));
     }
     @Test
     public void testFactorialOfOne() {
